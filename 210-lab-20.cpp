@@ -2,7 +2,7 @@
 #include <iomanip>
 
 using namespace std;
-const int SIZE = 3;
+const int SIZE = 3, MIN = 10000, MAX = 99999;
 
 class Chair {
 private:
@@ -10,19 +10,17 @@ private:
     double * prices;
 public:
     // constructors
-    // TODO: Change to randomly select 3 or 4 legs & randomly select prices between 100-999.99
     Chair() {
         prices = new double[SIZE];
         legs = 0;
         for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+            prices[i] = (rand() % (MAX-MIN+1) + MIN) / (double) 100;
     }
-    // TODO: Change so it takes an array of 3 doubles as an arg as well
-    Chair(int l) {
+    Chair(int l, double p[SIZE]) {
         prices = new double[SIZE];
         legs = l;
         for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+            prices[i] = p[i];
     }
 
     // setters and getters
@@ -60,7 +58,8 @@ int main() {
     chairPtr->print();
 
     //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3);
+    double livingChairPrices[SIZE] = {0, 0, 0}; // because the
+    Chair *livingChair = new Chair(3, livingChairPrices);
     livingChair->setPrices(525.25, 434.34, 252.52);
     livingChair->print();
     delete livingChair;
