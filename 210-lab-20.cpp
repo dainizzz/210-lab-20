@@ -58,7 +58,7 @@ int main() {
     chairPtr->print();
 
     //creating dynamic chair object with constructor
-    // The parameter constructor now takes an array with three items, so it is created below.
+    // The parameter constructor now takes an array with three items, so a prices array is created below.
     double livingChairPrices[SIZE] = {0, 0, 0};
     Chair *livingChair = new Chair(3, livingChairPrices);
     livingChair->setPrices(525.25, 434.34, 252.52);
@@ -67,7 +67,8 @@ int main() {
     livingChair = nullptr;
 
     //creating dynamic array of chair objects
-    // The default constructor randomly assigns a value for legs and prices,
+    // The default constructor randomly assigns a value for legs and prices, so when the dynamic array below is created,
+    // all the Chair objects have those member variables populated.
     Chair *collection = new Chair[SIZE];
 
     for (int i = 0; i < SIZE; i++)
